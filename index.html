@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jose's Taco Truck</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="py-6 bg-yellow-50">
+    <header class="flex  flex-col text-center bg-red-300 ">
+        <h1 class=" text-3xl font-bold">Jose's Jumpin Nachos</h1>
+        <p id="status">Closed</p>
+
+    </header>
+    <button id="open-button"
+        class=" flex flex-row border px-3 py-1 bg-white text-center mx-auto rounded-xl mt-2">Open</button>
+    <div class="grid grid-col-1 gap-8 py-4">
+        <div class="bg-white border-2 border-slate-200 rounded-lg flex-row text-center mx-auto flex-grow">
+            <h2 id="menu" class="text-xl font-semibold mt-4">Menu</h2>
+            
+            <div id="list-container" class="list-none text-md">
+
+                <!-- <ul id="info-list" class="list-none text-sm"></ul>  -->
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="flex justify-center flex-row">
+        <div id="entire-item" class="flex flex-col py-4 gap-4">
+            <p>New item</p>
+            <p>Description</p>
+        </div>
+        <p id="total-sold"></p>
+        <div id="inputs" class="flex flex-col">
+            <input id="new-item" type="text" class="border p-2">
+            <input id="new-desc" type="text" class="border p-2">
+        </div>
+    </div>
+    <button id="add-button" class="flex mx-auto border px-3 py-1 rounded-xl">Add Item</button>
+
+    <div class="flex flex-col text-center gap-2 w-50 mx-auto py-4">
+        <h2 class="text-xl font-semibold">Todays Location</h2>
+        <p id="today-location"></p>
+        <div class="flex justify-center flex-row gap-4">
+        <input id="location" type="text" class="border p-2">
+        <button id="location-button" class="flex mx-auto border px-3 py-1 rounded-xl">Set</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

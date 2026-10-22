@@ -1,0 +1,26 @@
+.info-style{
+    font-size: 10px; 
+    color: gray; 
+}
+
+.sold-button{
+    margin-left: 8px;
+    border: 1px solid;
+    padding: 0 6px; 
+    border-radius: 10px;  
+}
+
+.open{
+    color: green; 
+    font-weight: bold; 
+}
+
+.sold-out{
+    color: lightgray;
+    text-decoration: line-through;
+}
+
+.empty{
+  color: gray; 
+  font-style: italic; 
+}
