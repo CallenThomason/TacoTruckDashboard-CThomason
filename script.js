@@ -21,7 +21,6 @@ const resetButton = document.getElementById("reset-button");
 
 const bestSeller = document.getElementById("best-seller");
 
-// const entireItem = document.getElementById("entire-item"); 
 
 
 
@@ -60,12 +59,6 @@ function drawMenu() {
         const soldButton = document.createElement("button");
         soldButton.textContent = "Sold One";
         soldButton.classList.add("sold-button");
-
-
-        // if (totalsold = 0) {
-        //     totalSoldToday.textContent = "Total Sold Today: 0";
-
-        // }
 
         soldButton.addEventListener("click", function () {
             menu[i].sold += 1;
@@ -224,7 +217,6 @@ newLocation.addEventListener("input", noEmptyLocation);
 
 resetButton.addEventListener("click", reset);
 
-// entireItem.addEventListener("click", soldOut); 
 
 
 
