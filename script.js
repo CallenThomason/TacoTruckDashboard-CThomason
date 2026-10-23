@@ -75,6 +75,17 @@ function drawMenu() {
                 soldButton.disabled = false;
             }
         });
+        // const removeButton = document.createElement("button");
+        // removeButton.textContent = "Remove";
+        // removeButton.classList.add("sold-button");
+        // removeButton.addEventListener("click", function(){
+        //     row.remove();
+        //     menu.splice(row.id); 
+        //     console.log("works"); 
+           
+        // })
+        row.appendChild(soldButton);
+        // row.appendChild(removeButton); 
         //row.appendChild(soldButton);
 
 
@@ -86,7 +97,7 @@ function drawMenu() {
 
         menuList.appendChild(row);
         menuList.appendChild(info);
-        menuList.appendChild(soldButton);
+       
 
 
     }
