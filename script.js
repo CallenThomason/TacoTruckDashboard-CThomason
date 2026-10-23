@@ -17,6 +17,10 @@ const todayLocation = document.getElementById("today-location");
 
 const totalSoldToday = document.getElementById("total-sold");
 
+const resetButton = document.getElementById("reset-button");
+
+const bestSeller = document.getElementById("best-seller");
+
 // const entireItem = document.getElementById("entire-item"); 
 
 
@@ -29,26 +33,26 @@ function drawMenu() {
     menuList.replaceChildren();
 
     let totalsold = 0;
-     if (menu.length === 0) {
-            console.log("working");
-            const empty = document.createElement("li");
-            empty.textContent = "No Menu Items Added";
-            empty.classList.add("empty");
-            menuList.appendChild(empty);
+    if (menu.length === 0) {
 
-             totalSoldToday.textContent = "Total Sold Today: 0";
-        
+        const empty = document.createElement("li");
+        empty.textContent = "No Menu Items Added";
+        empty.classList.add("empty");
+        menuList.appendChild(empty);
+
+        totalSoldToday.textContent = "Total Sold Today: 0";
+
         menuList.appendChild(totalSoldToday);
 
-            return;
-        }
-    
+        return;
+    }
+
     for (let i = 0; i < menu.length; i++) {
 
-       
+
 
         totalsold = totalsold + menu[i].sold;
-        console.log(totalsold);
+
         const row = document.createElement("ul");
         row.id = `row-${i}`;
         row.textContent = `${menu[i].name}`;
@@ -65,13 +69,13 @@ function drawMenu() {
 
         soldButton.addEventListener("click", function () {
             menu[i].sold += 1;
-            console.log(menu[i].sold);
+
             drawMenu();
         });
         row.addEventListener("click", function () {
             row.classList.toggle("sold-out")
             if (row.classList.contains("sold-out")) {
-                console.log("hi");
+
                 soldButton.disabled = true;
             }
             else {
@@ -91,22 +95,23 @@ function drawMenu() {
         menuList.appendChild(info);
         menuList.appendChild(soldButton);
 
+
     }
     if (totalsold === 0) {
 
         totalSoldToday.textContent = "Total Sold Today: 0";
-        console.log("hi");
+
         menuList.appendChild(totalSoldToday);
 
     }
     else {
 
-        totalSoldToday.textContent = `Todal Sold Today: ${totalsold}`;
+        totalSoldToday.textContent = `Total Sold Today: ${totalsold}`;
         menuList.appendChild(totalSoldToday);
 
 
     }
-
+    betterSeller();
     //whole.appendChild(soldButton);
 }
 
@@ -134,7 +139,7 @@ function noEmpty() {
     }
     else {
         addButton.disabled = false;
-        console.log("Hello");
+
     }
 }
 let locationButtonUsed = false;
@@ -161,9 +166,47 @@ function noEmptyLocation() {
     }
 }
 
-// function soldOut(){
-//       entireItem.classList.toggle("sold-out")
-// }
+function reset() {
+
+    locationButtonUsed = false;
+    newLocation.value === "";
+    addLocation();
+    statusLine.textContent = "Closed";
+    statusLine.classList.remove("open");
+    menu.forEach(function (item) {
+        item.sold = 0;
+    });
+    drawMenu();
+}
+
+function betterSeller() {
+    bestSeller.replaceChildren();
+    let savedIndex = 0;
+    const row = document.createElement("p")
+    row.textContent = "No Best seller of the Day Yet";
+    row.classList.add("empty");
+
+    for (let i = 0; i < menu.length; i++) {
+        if (Number(menu[savedIndex].sold) < Number(menu[i].sold)) {
+
+            savedIndex = i;
+        }
+    }
+
+
+    if (menu[savedIndex] != undefined) {
+
+        //console.log(menu[savedIndex].name + menu[savedIndex].sold); 
+        if (menu[savedIndex].sold > 0) {
+            row.textContent = `The Best Seller of Today is: ${menu[savedIndex].name}`;
+            row.classList.remove("empty");
+            bestSeller.appendChild(row);
+        }
+    }
+
+    bestSeller.appendChild(row);
+
+}
 
 // ----- listeners -----
 
@@ -179,6 +222,8 @@ locationButton.addEventListener("click", addLocation);
 
 newLocation.addEventListener("input", noEmptyLocation);
 
+resetButton.addEventListener("click", reset);
+
 // entireItem.addEventListener("click", soldOut); 
 
 
@@ -187,6 +232,7 @@ newLocation.addEventListener("input", noEmptyLocation);
 // ----- run at load -----
 drawMenu();
 addLocation();
+betterSeller();
 
 addButton.disabled = true;
 locationButton.disabled = true; 
